@@ -25,6 +25,7 @@ setup(
         coverage,
         tqdm,
         flake8,
+        huggingface_hub,
     ],
     include_package_data=True,
     url="https://github.com/lslattery11/wafer-defect-detection/",
