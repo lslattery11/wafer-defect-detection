@@ -10,7 +10,6 @@ setup(
     packages=find_namespace_packages(where="src", exclude=("test",)),
     package_dir={"": "src"},
     install_requires=[
-        setuptools,
         numpy,
         pytorch,
         torchvision,
