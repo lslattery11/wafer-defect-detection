@@ -3,6 +3,7 @@ import wandb
 import torchmetrics
 import time
 
+
 def train_model(
     model,
     optimizer ,
@@ -12,6 +13,9 @@ def train_model(
     ):
     assert(isinstance(model,torch.nn.Module)),"net must be an instance of torch.nn.Module"
     assert(isinstance(optimizer,torch.optim.Optimizer)),"optimizer must be an instance of torch.optim.Optimizer"
+
+    device=next(model.parameters()).device
+
     for epoch in range(epochs):
         start=time.time()
         print('EPOCH {}:'.format(epoch + 1))
@@ -22,9 +26,11 @@ def train_model(
         # Stop trainining mode.
         model.train(False)
 
+        #should change to be cleaean up.
         running_vloss = 0.0
         for i, vdata in enumerate(model.validLoader):
             vinputs, vlabels = vdata
+            vinputs, vlabels = vinputs.to(device), vlabels.to(device)
             voutputs = model(vinputs)
             vloss = model.validLossfn(voutputs, vlabels)
             running_vloss += vloss
@@ -51,12 +57,16 @@ def train_one_epoch(
     optimizer,
     batch_step_size,
     ):
+
+    device=next(model.parameters()).device
+
     running_loss = 0.
     last_loss = 0.
-
+    
     optimizer.zero_grad()
     for i, data in enumerate(model.trainingLoader):
         inputs, labels = data
+        inputs, labels = inputs.to(device), labels.to(device)
         #optimizer.zero_grad()
 
         # Make predictions for this batch

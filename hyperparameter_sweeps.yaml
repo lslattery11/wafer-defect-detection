@@ -28,7 +28,7 @@ parameters:
   name:
     value: cnn_spp_net
   outpath:
-    value: /mnt/c/Users/lslat/Data/wafer_defect_data/
+    value: /media/HomeData/lslattery/wafer_defect_data/
 
 command:
   - ${env}
