@@ -1,0 +1,37 @@
+program: run_model.py
+env: /env
+interpreter: python3
+method: bayes
+metric:
+  goal: minimize
+  name: validation_loss
+parameters:
+  learning_rate:
+    values: [0.0001, 0.0003, 0.001, 0.003, 0.01]
+  weight_decay:
+    max: 0.5
+    min: 0.1
+    distribution: q_uniform
+    q: 0.05
+  batch_step_size:
+    values: [128,512,2048,4096,8192]
+  num_cnn_layers:
+    value: 3
+  num_spp_outputs:
+    value: 4 
+  num_linear_layers:
+    value: 4
+  epochs:
+    value: 100
+  transform_prob_threshold:
+    value: 0
+  name:
+    value: cnn_spp_net
+  outpath:
+    value: /mnt/c/Users/lslat/Data/wafer_defect_data/
+
+command:
+  - ${env}
+  - ${interpreter}
+  - ${program}
+  - ${args}

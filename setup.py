@@ -13,6 +13,8 @@ setup(
         "numpy",
         "torch",
         "torchvision",
+        "torchmetrics",
+        "pytorch-lightning",
         "pandas",
         "matplotlib",
         "ipykernel",
@@ -22,6 +24,7 @@ setup(
         "pylint",
         "flake8",
         "huggingface_hub",
+        "hyperopt"
     ],
     include_package_data=True,
     url="https://github.com/lslattery11/wafer-defect-detection/",
