@@ -14,7 +14,7 @@ parameters:
     distribution: q_uniform
     q: 0.1
   batch_step_size:
-    values: [2048,4096,8192]
+    values: [2048,4096,8192,16384]
   num_cnn_layers:
     value: 3
   num_spp_outputs:
