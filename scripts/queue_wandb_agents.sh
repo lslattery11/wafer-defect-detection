@@ -1,7 +1,7 @@
 #!/bin/bash
 
 parallel \
-    --jobs 10 \
+    --jobs 2 \
     """
-    cd ../ ; wandb agent --count 5 lslattery/wafer-defect-detection/kp0581v2
-    """ ::: $(seq 0 3)
+    cd ../ ; wandb agent --count 10 lslattery/wafer-defect-detection/1myjarll
+    """ ::: $(seq 0 1)

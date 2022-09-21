@@ -3,7 +3,6 @@ import wandb
 import torchmetrics
 import time
 
-
 def train_model(
     model,
     optimizer ,

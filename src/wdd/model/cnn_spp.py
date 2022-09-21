@@ -123,7 +123,7 @@ class CNN_SPP_Net(nn.Module):
 
         with torch.no_grad():
             for inputs,labels in dataloader:
-                inputs,labels=input.to(device),labels.to(device)
+                inputs,labels=inputs.to(device),labels.to(device)
                 x=self.forward(inputs)
                 logits=torch.nn.Softmax(dim=1)(x)
                 batch_pred_probs,batch_preds=torch.max(logits,dim=1)
@@ -161,7 +161,7 @@ def make_spp_training_net(config):
     net.init_weights()
     if torch.cuda.is_available():
         device=torch.cuda.device(0)
-    net.to(device)
+        net.to(device)
 
     #load data. split train_df into training and valid dataframes.
     train_df,_=get_processed_data()

@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
 setup(
     name="wafer-defect-detection",
     version=1.0,
-    python_requires=">= 3.6",
+    python_requires=">= 3.8",
     packages=find_namespace_packages(where="src", exclude=("test",)),
     package_dir={"": "src"},
     install_requires=[
@@ -15,6 +15,7 @@ setup(
         "torchvision",
         "torchmetrics",
         "pytorch-lightning",
+        "skorch"
         "pandas",
         "matplotlib",
         "ipykernel",
