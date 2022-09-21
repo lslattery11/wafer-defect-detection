@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
 setup(
     name="wafer-defect-detection",
     version=1.0,
-    python_requires=">= 3.9",
+    python_requires=">= 3.6",
     packages=find_namespace_packages(where="src", exclude=("test",)),
     package_dir={"": "src"},
     install_requires=[
