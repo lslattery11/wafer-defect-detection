@@ -160,7 +160,7 @@ def make_spp_training_net(config):
     net=CNN_SPP_Net(model_parameters)
     net.init_weights()
     if torch.cuda.is_available():
-        device=torch.cuda.device(0)
+        device=torch.device('cuda')
         net.to(device)
 
     #load data. split train_df into training and valid dataframes.
