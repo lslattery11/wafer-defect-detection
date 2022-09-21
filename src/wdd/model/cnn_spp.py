@@ -176,7 +176,7 @@ def make_spp_training_net(config):
     training_class_weights=torch.Tensor([1/training_set.len])*torch.Tensor([training_set.y.count(i) for i in range(9)])
     assert(np.isclose(training_class_weights.sum(),1)),'class_weights must sum to be one'
 
-    sample_weights=torch.Tensor([1/training_class_weights[i] for i in training_set.y])
+    sample_weights=torch.Tensor([1/training_class_weights[i] for i in training_set.y]).to(device)
 
     sampler=WeightedRandomSampler(weights=sample_weights,num_samples=len(sample_weights))
 
