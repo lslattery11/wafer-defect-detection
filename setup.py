@@ -15,7 +15,7 @@ setup(
         "torchvision",
         "torchmetrics",
         "pytorch-lightning",
-        "skorch"
+        "skorch",
         "pandas",
         "matplotlib",
         "ipykernel",
