@@ -31,6 +31,7 @@ def train_model(
             vinputs, vlabels = vdata
             vinputs, vlabels = vinputs.to(device), vlabels.to(device)
             voutputs = model(vinputs)
+            voutputs = voutputs.to(device)
             vloss = model.validLossfn(voutputs, vlabels)
             running_vloss += vloss
 
