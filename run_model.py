@@ -74,6 +74,7 @@ if __name__ == '__main__':
         transform_prob_threshold=args.transform_prob_threshold,
         epochs=args.epochs,
         model_parameters=model_parameters,
+        use_cuda=False,
         )
     
     net=make_spp_training_net(config)

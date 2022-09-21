@@ -159,7 +159,7 @@ def make_spp_training_net(config):
     model_parameters=config['model_parameters']
     net=CNN_SPP_Net(model_parameters)
     net.init_weights()
-    if torch.cuda.is_available():
+    if torch.cuda.is_available() and config['use_cuda']==True:
         device=torch.device('cuda')
         net.to(device)
 
