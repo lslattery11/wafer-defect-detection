@@ -21,7 +21,7 @@ parameters:
   num_spp_outputs:
     values: [2, 3, 4, 5]
   num_linear_layers:
-    values: [2, 3, 4, 5, 6]
+    values: [2, 3, 4, 5, 6, 7]
   epochs:
     value: 100
   transform_prob_threshold:
