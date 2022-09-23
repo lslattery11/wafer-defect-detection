@@ -3,6 +3,7 @@ import argparse
 from datetime import datetime
 
 import wandb
+import torch
 from torch.optim import Adam
 
 from wdd.model.cnn_spp import CNN_SPP_Net,make_spp_training_net

@@ -5,13 +5,17 @@ method: bayes
 metric:
   goal: minimize
   name: validation_loss
+early_terminate:
+  type: hyperband
+  min_iter: 7
+  eta: 3
 parameters:
   learning_rate:
-    value: 0.003
+    values: [0.01, 0.003, 0.001, 0.0003, 0.0001, 0.00003]
   weight_decay:
-    value: 0.2
+    values: [0.1, 0.2, 0.3, 0.4, 0.5]
   batch_step_size:
-    value: 2048
+    values: [1024,2048,4096,8192,16384]
   num_cnn_layers:
     values: [2, 3, 4, 5]
   num_spp_outputs:
@@ -19,9 +23,9 @@ parameters:
   num_linear_layers:
     values: [2, 3, 4, 5, 6]
   epochs:
-    value: 200
+    value: 100
   transform_prob_threshold:
-    value: 1
+    value: 0
   name:
     value: cnn_spp_net
   outpath:
