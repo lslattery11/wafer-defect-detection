@@ -7,7 +7,7 @@ metric:
   name: validation_loss.min
 early_terminate:
   type: hyperband
-  min_iter: 7
+  min_iter: 20
   eta: 3
 parameters:
   learning_rate:
