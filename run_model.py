@@ -112,7 +112,7 @@ if __name__ == '__main__':
         log=True,
         )
     
-    net.save(os.path.join(wandb.run.dir, name+'.pt'))
+    torch.save(net,os.path.join(wandb.run.dir, name+'.pt'))
 
     wandb.finish()
 
