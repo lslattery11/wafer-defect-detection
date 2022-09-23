@@ -105,7 +105,8 @@ if __name__ == '__main__':
     wandb.define_metric("training_loss", summary="min")
     wandb.define_metric("validation_loss", summary="min")
     wandb.define_metric("balanced_f1", summary="max")
-
+    wandb.define_metric("exp_avg_validation_loss",summary="min")
+    
     train_model(
         net,
         optimizer,
