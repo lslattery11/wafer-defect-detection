@@ -4,7 +4,7 @@ interpreter: python3
 method: bayes
 metric:
   goal: minimize
-  name: validation_loss
+  name: validation_loss.min
 early_terminate:
   type: hyperband
   min_iter: 7
