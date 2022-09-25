@@ -34,7 +34,7 @@ def train_model(
             vinputs, vlabels = vinputs.to(device), vlabels.to(device)
             voutputs = model(vinputs)
             vloss = model.validLossfn(voutputs, vlabels)
-            running_vloss += vloss
+            running_vloss += vloss.item()
 
         avg_vloss = running_vloss / (i + 1)
         exp_avg_vloss=window*avg_vloss + (1-window)*exp_avg_vloss
@@ -88,9 +88,6 @@ def train_one_epoch(
             optimizer.step()
             optimizer.zero_grad()
             #print("running loss: ",running_loss/(i+1))
-            
-        # Gather data and report
-        running_loss += loss.item()
 
 
     last_loss=running_loss/(i+1)
