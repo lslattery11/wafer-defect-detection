@@ -7,7 +7,7 @@ metric:
   name: exp_avg_validation_loss.min
 early_terminate:
   type: hyperband
-  min_iter: 20
+  min_iter: 3
   eta: 3
 parameters:
   learning_rate:
@@ -21,13 +21,13 @@ parameters:
   batch_step_size:
     values: [1024,2048,4096,8192,16384]
   num_cnn_layers:
-    values: [2, 3, 4, 5]
+    values: [2,3]
   num_spp_outputs:
-    values: [2, 3, 4, 5]
+    values: [2,3]
   num_linear_layers:
-    values: [2, 3, 4, 5, 6, 7]
+    values: [2, 3]
   epochs:
-    value: 200
+    value: 10
   transform_prob_threshold:
     value: 0
   name:

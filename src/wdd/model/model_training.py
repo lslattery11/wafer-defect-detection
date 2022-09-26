@@ -14,7 +14,7 @@ def train_model(
     assert(isinstance(optimizer,torch.optim.Optimizer)),"optimizer must be an instance of torch.optim.Optimizer"
 
     device=next(model.parameters()).device
-    window=0.5
+    window=0.25
     exp_avg_vloss=0
 
     for epoch in range(epochs):
@@ -37,7 +37,7 @@ def train_model(
             running_vloss += vloss.item()
 
         avg_vloss = running_vloss / (i + 1)
-        exp_avg_vloss=window*avg_vloss + (1-window)*exp_avg_vloss
+        exp_avg_vloss=window*exp_avg_vloss + (1-window)*avg_vloss
 
         y_trues,y_preds,_ = model.predict(model.validLoader)
         balanced_f1=torchmetrics.F1Score(num_classes=9,average='macro')(y_trues,y_preds)
