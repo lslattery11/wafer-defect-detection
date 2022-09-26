@@ -14,7 +14,7 @@ def train_model(
     assert(isinstance(optimizer,torch.optim.Optimizer)),"optimizer must be an instance of torch.optim.Optimizer"
 
     device=next(model.parameters()).device
-    window=0.25
+    window=0.8
     exp_avg_vloss=0
 
     for epoch in range(epochs):
