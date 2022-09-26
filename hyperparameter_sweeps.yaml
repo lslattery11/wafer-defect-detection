@@ -4,7 +4,7 @@ interpreter: python3
 method: bayes
 metric:
   goal: minimize
-  name: exp_avg_validation_loss.min
+  name: exp_avg_validation_loss
 early_terminate:
   type: hyperband
   min_iter: 3
@@ -27,7 +27,7 @@ parameters:
   num_linear_layers:
     values: [2, 3]
   epochs:
-    value: 10
+    value: 40
   transform_prob_threshold:
     value: 0
   name:
