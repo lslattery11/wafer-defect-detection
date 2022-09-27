@@ -15,7 +15,7 @@ def train_model(
 
     device=next(model.parameters()).device
     window=0.8
-    exp_avg_vloss=0
+    exp_avg_vloss=1.0
 
     for epoch in range(epochs):
         start=time.time()
