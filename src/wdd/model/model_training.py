@@ -55,7 +55,7 @@ def train_model(
                 'exp_avg_validation_loss': exp_avg_vloss,
             })
             if epoch%10==0:
-                torch.save(torch.save(model.state_dict(),os.path.join(wandb.run.dir, name+'_'+str(epoch)+'_.pt')))
+                torch.save(model.state_dict(),os.path.join(wandb.run.dir, name+'_'+str(epoch)+'_.pt'))
         stop=time.time()
         print('LOSS train {} valid {} ... took {} minutes'.format(avg_loss, avg_vloss,(stop-start)/60))
 
