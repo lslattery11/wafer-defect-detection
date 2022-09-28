@@ -109,7 +109,7 @@ if __name__ == '__main__':
     train_model(
         net,
         optimizer,
-        epochs=args.epochs,
+        args.epochs,
         name,
         log=True,
         )
