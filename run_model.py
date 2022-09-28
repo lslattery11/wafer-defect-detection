@@ -83,7 +83,6 @@ if __name__ == '__main__':
     learning_rate=config['learning_rate']
     weight_decay=config['weight_decay']
     optimizer = Adam(net.parameters(), lr=learning_rate, weight_decay=weight_decay)
-
     #init wandb logging
     outpath=args.outpath
 
@@ -110,6 +109,7 @@ if __name__ == '__main__':
     train_model(
         net,
         optimizer,
+        name,
         epochs=args.epochs,
         log=True,
         )

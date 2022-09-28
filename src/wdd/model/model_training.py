@@ -2,11 +2,13 @@ import torch
 import wandb
 import torchmetrics
 import time
+import os
 
 def train_model(
     model,
     optimizer ,
     epochs: int ,
+    name ,
     batch_step_size: int = 1000,
     log: bool = False,
     ):
@@ -43,6 +45,7 @@ def train_model(
         balanced_f1=torchmetrics.F1Score(num_classes=9,average='macro')(y_trues,y_preds)
         by_class_f1=torchmetrics.F1Score(num_classes=9,average='none')(y_trues,y_preds)
 
+
         if log==True:
             wandb.log({
                 'training_loss' : avg_loss,
@@ -51,6 +54,8 @@ def train_model(
                 'by_class_f1': by_class_f1,
                 'exp_avg_validation_loss': exp_avg_vloss,
             })
+            if epoch%10==0:
+                torch.save(torch.save(model.state_dict(),os.path.join(wandb.run.dir, name+'_'+str(epoch)+'_.pt')))
         stop=time.time()
         print('LOSS train {} valid {} ... took {} minutes'.format(avg_loss, avg_vloss,(stop-start)/60))
 
