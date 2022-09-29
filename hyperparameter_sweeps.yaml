@@ -33,7 +33,7 @@ parameters:
   name:
     value: binary_cnn_spp_net
   outpath:
-    value: /data0/lslattery/wafer_defect_data/
+    value: /mnt/c/Users/lslat/Data/wafer_defect_data/
   binary:
     value: True
   just_defects:
