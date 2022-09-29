@@ -52,12 +52,27 @@ if __name__ == '__main__':
         "--outpath", type=str,
         required=True,
         help = "outpath for wandb logging")
+    parser.add_argument(
+        "--binary", type=bool,
+        required=True,
+        help="run binary classifier or not")
+    parser.add_argument(
+        "--just_defects", type=bool,
+        required=True,
+        help="train on just defects or or not")
+
 
     args = parser.parse_args()
 
     cnn_channels=tuple(2**(i) for i in range(args.num_cnn_layers))
     spp_output_sizes=[(1+2*i,1+2*i) for i in range(args.num_spp_outputs)]
-    linear_output_sizes=tuple(9*2**(i-1) for i in range(args.num_linear_layers,0,-1))
+
+    if args.binary:
+        linear_output_sizes=tuple(2*2**(i-1) for i in range(args.num_linear_layers,0,-1))
+    elif args.just_defects:
+        linear_output_sizes=tuple(8*2**(i-1) for i in range(args.num_linear_layers,0,-1))
+    else:
+        linear_output_sizes=tuple(9*2**(i-1) for i in range(args.num_linear_layers,0,-1))
 
     model_parameters=dict(
         cnn_channels=cnn_channels,
@@ -76,6 +91,8 @@ if __name__ == '__main__':
         epochs=args.epochs,
         model_parameters=model_parameters,
         use_cuda=False,
+        binary=args.binary,
+        just_defects=args.just_defects,
         )
     
     net=make_spp_training_net(config)

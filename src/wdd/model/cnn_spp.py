@@ -165,15 +165,18 @@ def make_spp_training_net(config):
 
     #load data. split train_df into training and valid dataframes.
     train_df,_=get_processed_data()
+    if config['just_defects']:
+        train_df[train_df['failureType']!='none']
+
     train_df,valid_df=train_test_split(train_df, test_size=0.2,random_state=42)
 
     #apply data augmentation to training set.
     transform_prob_threshold=config['transform_prob_threshold']
-    training_set=WaferDataset(train_df,transform=wafer_train_transforms(transform_prob_threshold))
-    valid_set=WaferDataset(valid_df)
+    training_set=WaferDataset(train_df,transform=wafer_train_transforms(transform_prob_threshold),binary=config['binary'])
+    valid_set=WaferDataset(valid_df,binary=config['binary'])
 
     #calculate class weights for training set. sample with weights.
-    training_class_weights=torch.Tensor([1/training_set.len])*torch.Tensor([training_set.y.count(i) for i in range(9)])
+    training_class_weights=torch.Tensor([1/training_set.len])*torch.Tensor([training_set.y.count(i) for i in range(len(set(training_set.y)))])
     assert(np.isclose(training_class_weights.sum(),1)),'class_weights must sum to be one'
 
     sample_weights=torch.Tensor([1/training_class_weights[i] for i in training_set.y])
@@ -181,7 +184,7 @@ def make_spp_training_net(config):
     sampler=WeightedRandomSampler(weights=sample_weights,num_samples=len(sample_weights))
 
     #calculate class weights for validation set.
-    valid_class_weights=torch.Tensor([1/valid_set.len])*torch.Tensor([valid_set.y.count(i) for i in range(9)])
+    valid_class_weights=torch.Tensor([1/valid_set.len])*torch.Tensor([valid_set.y.count(i) for i in range(len(set(valid_set.y)))])
     assert(np.isclose(valid_class_weights.sum(),1)),'valid_class_weights must sum to be one'
 
     #create data loaders. use sampler for training_loader
