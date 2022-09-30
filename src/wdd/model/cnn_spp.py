@@ -173,7 +173,7 @@ def make_spp_training_net(config):
     #apply data augmentation to training set.
     transform_prob_threshold=config['transform_prob_threshold']
     training_set=WaferDataset(train_df,transform=wafer_train_transforms(transform_prob_threshold),binary=config['binary'])
-    valid_set=WaferDataset(valid_df,binary=config['binary'])
+    valid_set=WaferDataset(valid_df,binary=config['binary'],just_defects=config['just_defects'])
 
     #calculate class weights for training set. sample with weights.
     training_class_weights=torch.Tensor([1/training_set.len])*torch.Tensor([training_set.y.count(i) for i in range(len(set(training_set.y)))])
