@@ -166,13 +166,13 @@ def make_spp_training_net(config):
     #load data. split train_df into training and valid dataframes.
     train_df,_=get_processed_data()
     if config['just_defects']:
-        train_df[train_df['failureType']!='none']
+        train_df=train_df[train_df['failureType']!='none']
 
     train_df,valid_df=train_test_split(train_df, test_size=0.2,random_state=42)
 
     #apply data augmentation to training set.
     transform_prob_threshold=config['transform_prob_threshold']
-    training_set=WaferDataset(train_df,transform=wafer_train_transforms(transform_prob_threshold),binary=config['binary'])
+    training_set=WaferDataset(train_df,transform=wafer_train_transforms(transform_prob_threshold),binary=config['binary'],just_defects=config['just_defects'])
     valid_set=WaferDataset(valid_df,binary=config['binary'],just_defects=config['just_defects'])
 
     #calculate class weights for training set. sample with weights.

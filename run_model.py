@@ -67,7 +67,6 @@ if __name__ == '__main__':
     cnn_channels=tuple(2**(i) for i in range(args.num_cnn_layers))
     spp_output_sizes=[(1+2*i,1+2*i) for i in range(args.num_spp_outputs)]
 
-
     if args.binary==True:
         linear_output_sizes=tuple(2*2**(i-1) for i in range(args.num_linear_layers,0,-1))
     elif args.just_defects==True:
