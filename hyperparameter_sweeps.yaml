@@ -5,10 +5,6 @@ method: bayes
 metric:
   goal: minimize
   name: exp_avg_validation_loss.min
-early_terminate:
-  type: hyperband
-  min_iter: 20
-  eta: 3
 parameters:
   learning_rate:
     min: 0.0001
@@ -35,9 +31,12 @@ parameters:
   outpath:
     value: /data0/lslattery/wafer_defect_data/
   binary:
-    value: False
+    value: 0
   just_defects:
-    value: True
+    value: 1
+early_terminate:
+  type: hyperband
+  min_iter: 20
 
 command:
   - ${env}
