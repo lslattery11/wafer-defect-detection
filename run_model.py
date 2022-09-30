@@ -53,11 +53,11 @@ if __name__ == '__main__':
         required=True,
         help = "outpath for wandb logging")
     parser.add_argument(
-        "--binary", type=bool,
+        "--binary", type=int,
         required=True,
         help="run binary classifier or not")
     parser.add_argument(
-        "--just_defects", type=bool,
+        "--just_defects", type=int,
         required=True,
         help="train on just defects or or not")
 
@@ -67,8 +67,7 @@ if __name__ == '__main__':
     cnn_channels=tuple(2**(i) for i in range(args.num_cnn_layers))
     spp_output_sizes=[(1+2*i,1+2*i) for i in range(args.num_spp_outputs)]
 
-    print(args.binary==True)
-    print(args.just_defects==True)
+
     if args.binary==True:
         linear_output_sizes=tuple(2*2**(i-1) for i in range(args.num_linear_layers,0,-1))
     elif args.just_defects==True:
