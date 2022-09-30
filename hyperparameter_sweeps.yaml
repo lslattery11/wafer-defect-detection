@@ -27,17 +27,17 @@ parameters:
   num_linear_layers:
     values: [4,5,6,7]
   epochs:
-    value: 100
+    value: 200
   transform_prob_threshold:
     value: 0
   name:
     value: binary_cnn_spp_net
   outpath:
-    value: /mnt/c/Users/lslat/Data/wafer_defect_data/
+    value: /data0/lslattery/wafer_defect_data/
   binary:
-    value: True
-  just_defects:
     value: False
+  just_defects:
+    value: True
 
 command:
   - ${env}
