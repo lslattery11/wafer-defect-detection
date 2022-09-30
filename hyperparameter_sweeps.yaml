@@ -25,7 +25,7 @@ parameters:
   epochs:
     value: 200
   transform_prob_threshold:
-    value: 0
+    value: 1
   name:
     value: binary_cnn_spp_net
   outpath:
