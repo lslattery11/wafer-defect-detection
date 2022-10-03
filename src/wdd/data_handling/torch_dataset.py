@@ -25,7 +25,7 @@ class WaferDataset(Dataset):
     if binary==True:
       failure_dict={'none':0,'Edge-Loc':1,'Loc':1,'Center':1,'Edge-Ring':1,'Scratch':1,'Random':1,'Donut':1,'Near-full':1}
     elif just_defects==True:
-      failure_dict={'Edge-Loc':0,'Loc':1,'Center':2,'Edge-Ring':3,'Scratch':4,'Random':5,'Donut':6,'Near-full':7}
+      failure_dict={'Edge-Loc':0,'Loc':1,'Center':2,'Edge-Ring':3,'Scratch':4,'Random':5,'Donut':6,'Near-full':7,'none':8}
     else:
       failure_dict={'none':0,'Edge-Loc':1,'Loc':2,'Center':3,'Edge-Ring':4,'Scratch':5,'Random':6,'Donut':7,'Near-full':8}
 
